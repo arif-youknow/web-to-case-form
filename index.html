@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Service Request | Helios Equipment Services</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #eaf2ff, #f4f7fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #243247;
+        }
+
+        .form-card {
+            width: 100%;
+            max-width: 720px;
+            background: #ffffff;
+            padding: 38px;
+            box-shadow: 0 12px 40px rgba(28, 55, 90, 0.10);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .brand {
+            color: #1769aa;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 12px 0;
+            color: #173b63;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #697789;
+            line-height: 1.7;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        .required {
+            color: #e11d48;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d5dfeb;
+            font-family: inherit;
+            font-size: 14px;
+            color: #243247;
+            background: #ffffff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #2474bd;
+            box-shadow: 0 0 0 3px rgba(36, 116, 189, 0.12);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 28px;
+            padding: 15px;
+            border: none;
+            background: #347AEA;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #1867E7;
+            transform: translateY(-1px);
+        }
+
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #8491a3;
+        }
+
+        @media (max-width: 600px) {
+            .form-card {
+                padding: 24px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-card">
+
+    <div class="header">
+        <div class="brand">Helios Equipment Services</div>
+        <h1>Request a Service</h1>
+        <p>
+            Tell us about your equipment issue or billing enquiry.
+            Fields marked <span class="required">*</span> are required.
+        </p>
+    </div>
+
+    <form
+        action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&amp;orgId=00Dg800000Muqbx"
+        method="POST"
+        accept-charset="UTF-8"
+    >
+
+        <!-- Salesforce Organisation -->
+        <input
+            type="hidden"
+            name="orgid"
+            value="00Dg800000Muqbx"
+        >
+
+        <!-- Return URL -->
+        <input
+            type="hidden"
+            name="retURL"
+            value="https://arif-youknow.github.io/lead-generation-form/thank-you.html"
+        >
+
+        <!-- Case Origin -->
+        <input
+            type="hidden"
+            name="origin"
+            value="Web"
+        >
+
+        <!-- Optional debugging: uncomment only when troubleshooting.
+        <input type="hidden" name="debug" value="1">
+        <input
+            type="hidden"
+            name="debugEmail"
+            value="arifcseuits@gmail.com"
+        >
+        -->
+
+        <div class="form-grid">
+
+            <!-- Contact Name -->
+            <div class="form-group">
+                <label for="name">
+                    Contact Name <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    maxlength="80"
+                    placeholder="Enter full name"
+                    autocomplete="name"
+                    required
+                >
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">
+                    Email Address <span class="required">*</span>
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    maxlength="80"
+                    placeholder="name@company.com"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    maxlength="40"
+                    placeholder="+44 20 1234 5678"
+                    autocomplete="tel"
+                >
+            </div>
+
+            <!-- Case Record Type -->
+            <div class="form-group">
+                <label for="recordType">
+                    Request Category <span class="required">*</span>
+                </label>
+
+                <select
+                    id="recordType"
+                    name="recordType"
+                    required
+                >
+                    <option value="" selected disabled>
+                        Select request category
+                    </option>
+                    <option value="012g8000005NF3V">
+                        Technical Support
+                    </option>
+                    <option value="012g8000005NF57">
+                        Billing Enquiry
+                    </option>
+                </select>
+            </div>
+
+            <!-- Service Region -->
+            <div class="form-group">
+                <label for="00Ng800001A8NfV">
+                    Service Region <span class="required">*</span>
+                </label>
+
+                <select
+                    id="00Ng800001A8NfV"
+                    name="00Ng800001A8NfV"
+                    title="Service Region"
+                    required
+                >
+                    <option value="" selected disabled>
+                        Select service region
+                    </option>
+                    <option value="Benelux">Benelux</option>
+                    <option value="Nordics">Nordics</option>
+                    <option value="DACH">DACH</option>
+                </select>
+            </div>
+
+            <!-- Priority -->
+            <div class="form-group">
+                <label for="priority">
+                    Priority <span class="required">*</span>
+                </label>
+
+                <select
+                    id="priority"
+                    name="priority"
+                    required
+                >
+                    <option value="High">High</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group full-width">
+                <label for="subject">
+                    Subject <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    maxlength="80"
+                    placeholder="Briefly describe your request"
+                    required
+                >
+            </div>
+
+            <!-- Description -->
+            <div class="form-group full-width">
+                <label for="description">
+                    Enquiry Details <span class="required">*</span>
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    maxlength="32000"
+                    placeholder="Describe your equipment issue or billing enquiry..."
+                    required
+                ></textarea>
+            </div>
+
+        </div>
+
+        <button type="submit" name="submit" class="submit-btn">
+            Submit Request
+        </button>
+
+    </form>
+
+    <div class="footer">
+        © Helios Equipment Services
+        | Industrial Equipment Solutions
+    </div>
+
+</div>
+
+</body>
+</html>
