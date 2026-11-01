@@ -1,1 +1,6 @@
 .sf/
+.sf/
+.sfdx/
+node_modules/
+.env
+.env.*
